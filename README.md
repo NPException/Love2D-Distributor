@@ -10,7 +10,6 @@ Generated zip files
 - Windows 64bit
 - Windows 64bit loose package
 - Mac OSX
-- 
 
 ### What the do you mean with "loose package"
 That is a zip containing the unmodified `love.exe` and `.dll` files, the game source folder, and a batch file to run the game.
