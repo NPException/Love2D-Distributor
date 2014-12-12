@@ -24,9 +24,11 @@ public class Main {
 		System.out.println("=== CREATING DISTRIBUTION FILES ===");
 		System.out.println();
 		
+		ld.clearTargetFolder();
 		File lovefile = ld.createLoveFile();
 		ld.createWindowsRelease(lovefile);
 		ld.createOSXRelease(lovefile);
+		ld.createLooseWindowsPackage();
 		
 		System.out.println("=== SUCCESS ===");
 		System.out.println();

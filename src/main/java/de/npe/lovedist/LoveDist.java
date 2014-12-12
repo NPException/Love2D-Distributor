@@ -8,7 +8,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import de.npe.lovedist.creator.MacOSXReleaseCreator;
+import de.npe.lovedist.creator.WindowsLoosePackageCreator;
 import de.npe.lovedist.creator.WindowsReleaseCreator;
+import de.npe.lovedist.helper.FileUtil;
 import de.npe.lovedist.helper.ZipUtil;
 
 public class LoveDist {
@@ -46,16 +48,23 @@ public class LoveDist {
 		}
 		return false;
 	}
+	
+	public void clearTargetFolder() {
+		File targetFolder = new File(config.targetFolder);
+		if (targetFolder.exists()) {
+			FileUtil.deleteRecursively(targetFolder);
+		}
+		
+		// recheck in case something went wrong during deletion
+		if (!targetFolder.exists()) {
+			targetFolder.mkdirs();
+		}
+	}
 
 	public File createLoveFile() {
 		System.out.println("--> LOVE FILE <--");
 		ZipUtil zipper = new ZipUtil(config.srcFolder, true);
 		zipper.generateFileList();
-
-		File targetFolder = new File(config.targetFolder);
-		if (!targetFolder.exists()) {
-			targetFolder.mkdirs();
-		}
 		
 		File loveFile = new File(config.targetFolder, config.name + ".love");
 		zipper.zipIt(loveFile);
@@ -69,5 +78,9 @@ public class LoveDist {
 	
 	public void createOSXRelease(File loveFile) {
 		MacOSXReleaseCreator.create(config, loveFile);
+	}
+	
+	public void createLooseWindowsPackage() {
+		WindowsLoosePackageCreator.create(config);
 	}
 }
