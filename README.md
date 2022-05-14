@@ -6,13 +6,12 @@ This tool is easy to use and multiplatform. It generates release ready zip files
 
 *TODO*
 
-## Generated zip files
+## Generated distributable files
 
-- Windows 32bit
-- Windows 32bit loose package
 - Windows 64bit
 - Windows 64bit loose package
-- Mac OSX
+- basic .love file
+- MacOS (someday) 
 
 ### What the do you mean with "loose package"
 That is a zip containing the unmodified `love.exe` and `.dll` files, the game source folder, and a batch file to run the game.

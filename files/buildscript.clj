@@ -1,5 +1,5 @@
 #!/usr/bin/env bb
-(ns script
+(ns buildscript
   (:require [clojure.string :as str]
             [clojure.java.io :as io])
   (:import (java.util.zip ZipOutputStream

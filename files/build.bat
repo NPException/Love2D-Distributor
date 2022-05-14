@@ -1,1 +1,1 @@
-bb.exe script.clj
+bb.exe buildscript.clj
